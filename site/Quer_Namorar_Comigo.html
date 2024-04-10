@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quer namorar comigo?</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f0f0f0;
+            transition: background-color 0.5s;
+        }
+        h1 {
+            margin-top: 50px;
+            color: #333;
+        }
+        #buttons {
+            margin-top: 30px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.3s;
+        }
+        button:hover {
+            transform: scale(1.1);
+        }
+        #sim {
+            margin-right: 20px;
+        }
+        #nao {
+            margin-left: 20px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <h1>Quer namorar comigo?</h1>
+    <div id="buttons">
+        <button id="sim" onclick="playAudio()">Sim</button>
+        <button id="nao" onmouseover="moverBotao()">Não</button>
+    </div>
+
+    <audio id="myAudio" src="Audiocr7.mp3"></audio>
+
+    <script>
+        function playAudio() {
+            var audio = document.getElementById("myAudio");
+            audio.play();
+        }
+
+        function moverBotao() {
+            var naoButton = document.getElementById('nao');
+            var newTop = Math.random() * (window.innerHeight - naoButton.clientHeight);
+            var newLeft = Math.random() * (window.innerWidth - naoButton.clientWidth);
+            naoButton.style.top = Math.max(0, newTop) + 'px';
+            naoButton.style.left = Math.max(0, newLeft) + 'px';
+            changeBackgroundColor();
+        }
+
+        function changeBackgroundColor() {
+            var randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.body.style.backgroundColor = randomColor;
+        }
+    </script>
+</body>
+</html>
